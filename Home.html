@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Bakery</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  
+
+<style>
+.home-slider {
+    width: calc(100% - 40px);
+    max-width: 1900px;
+    height: clamp(280px, 38vw, 520px);
+    margin: 24px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #f8e5c8;
+    isolation: isolate;
+}
+
+/* Individual Slides */
+.home-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+/* Banner Images */
+.home-slide > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1);
+}
+
+.home-slide.active > img {
+    animation: homeImageZoom 2s ease-in-out both;
+}
+
+/* Soft overlay for readable text */
+.home-slide-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 239, 213, 0.96) 0%,
+        rgba(255, 239, 213, 0.84) 38%,
+        rgba(255, 239, 213, 0.25) 72%,
+        rgba(255, 239, 213, 0.05) 100%
+    );
+}
+
+/* Text Content */
+.home-slide-content {
+    position: absolute;
+    z-index: 2;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52%;
+    max-width: 650px;
+    color: #342219;
+}
+
+.home-slide.active .home-slide-content {
+    animation: homeTextIn 0.8s ease both;
+}
+
+.home-slide-content > span {
+    display: block;
+    color: #87451f;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.home-slide-content h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4.3vw, 66px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    color: #342219;
+}
+
+.home-slide-content p {
+    max-width: 540px;
+    font-size: clamp(14px, 1.35vw, 20px);
+    line-height: 1.6;
+    margin: 0 0 22px;
+    color: #513b2d;
+}
+
+/* Order Button */
+.home-slide-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    background: #87451f;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.home-slide-btn:hover {
+    background: #5f2e16;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* Bottom Dots */
+.home-slider-dots {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 1px solid #92542c;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.home-dot.active {
+    background: #92542c;
+    transform: scale(1.12);
+}
+
+/* Slow Image Zoom */
+@keyframes homeImageZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.07);
+    }
+}
+
+/* Text Fade and Slide In */
+@keyframes homeTextIn {
+    from {
+        opacity: 0;
+        translate: 0 15px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+/* Tablet Responsive */
+@media (max-width: 900px) {
+    .home-slider {
+        height: 350px;
+    }
+
+    .home-slide-content {
+        width: 60%;
+    }
+
+    .home-slide-content h1 {
+        font-size: clamp(30px, 5vw, 45px);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .home-slider {
+        width: calc(100% - 20px);
+        height: 340px;
+        margin: 14px auto;
+        border-radius: 10px;
+    }
+
+    .home-slide > img {
+        object-position: center;
+    }
+
+    .home-slide-shade {
+        background: linear-gradient(
+            90deg,
+            rgba(255, 239, 213, 0.95),
+            rgba(255, 239, 213, 0.78)
+        );
+    }
+
+    .home-slide-content {
+        left: 6%;
+        width: 88%;
+    }
+
+    .home-slide-content h1 {
+        font-size: clamp(30px, 8vw, 43px);
+    }
+
+    .home-slide-content p {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .home-slide-content > span {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .home-slide-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .home-slider-dots {
+        bottom: 12px;
+    }
+
+    .home-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Accessibility: Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .home-slide,
+    .home-slide > img,
+    .home-slide-content {
+        animation: none !important;
+        transition: none !important;
+    }
+}</style>
+</head>
+
+
+<body>
+
+<!-- 🔥 Logo (Top) -->
+<header class="header-main">
+    <div class="nav-wrapper">
+        
+        <div class="logo-area">
+            <a href="Home.html">
+                <img src="Fantasy_Logo_135x.png" class="logo-img" alt="logo">
+            </a>
+        </div>
+
+        <div class="search-area">
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products...">
+                <button class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="actions-area">
+            <div class="user-auth">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <div class="auth-text">
+                    <a href="#" onclick="openModal('login'); return false;">Sign In</a> <span>/</span> <a href="#" onclick="openModal('register'); return false;">Register</a>
+                </div>
+            </div>
+
+            <div class="icon-item" onclick="window.location.href='wishlist.html'" style="cursor:pointer">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <span class="badge wish-badge">0</span>
+            </div>
+
+            <div class="icon-item">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="badge cart-badge">0</span>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<!-- 🔥 Navbar (Below Logo) -->
+<nav class="navbar navbar-dark navbar-expand-lg custom-nav">
+  <div class="container-fluid px-0">
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"  >
+      <span class="navbar-toggler-icon " ></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse"  id="menu">
+      <ul class="navbar-nav">
+    
+        <li class="nav-item"><a class="nav-link" href="cake.html">Cake</a></li>
+        <li class="nav-item"><a class="nav-link" href="cookies.html">Cookies</a></li>
+        <li class="nav-item"><a class="nav-link" href="combos.html">Combos</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop.html">Shop By Occasion</a></li>
+        <li class="nav-item"><a class="nav-link" href="Wedding.html">Wedding</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- 🔥 Hero Section -->
+<!--<section class="hero">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center m-0">
+
+      <!-- Text -->
+     <!-- <div class="col-lg-6 text-center text-lg-start">
+        <h1>
+          Birthday Bliss,<br>
+          <span>Fresh from</span> Our <br> Oven!
+        </h1>
+
+        <p class="my-3">
+          Custom Cakes, Fun Themes, and Delightful <br>Flavours 
+          for Your Special Day.
+        </p>
+
+        <button class="btn  px-4 py-2">
+          ORDER NOW
+        </button>
+      </div>
+<div class="col-lg-6 position-relative">
+        <img src="Gemini_Generated_Image_nop53wnop53wnop5_1.png" class="cake-img" alt="cake">
+      </div>-->
+      <!-- 🔥 Hero Section -->
+
+<section class="home-slider" aria-label="Bakery promotions">
+
+    <!-- Slide 1: Birthday -->
+    <div class="home-slide active">
+        <img
+            src="2.jpg"
+            alt="Birthday cake"
+        >
+
+        <div class="home-slide-shade"></div>
+
+        <div class="home-slide-content">
+            <span>MADE FOR YOUR SPECIAL DAY</span>
+
+            <h1>
+                Birthday Bliss,<br>
+                Fresh from Our Oven!
+            </h1>
+
+            <p>
+                Custom Cakes, Fun Themes, and Delightful
+                Flavours for Your Special Day.
+            </p>
+
+            <a href="#main" class="home-slide-btn">ORDER NOW</a>
+        </div>
+    </div>
+
+    <!-- Slide 2: Celebration Cake -->
+    <div class="home-slide">
+        <img
+            src="pic1.png"
+            alt="Celebration cake"
+        >
+
+        <div class="home-slide-shade"></div>
+
+        <div class="home-slide-content">
+            <span>BAKED WITH LOVE</span>
+
+            <h1>
+                Every Celebration<br>
+                Deserves a Cake!
+            </h1>
+
+            <p>
+                Beautiful cakes made to turn your special
+                moments into sweet memories.
+            </p>
+
+            <a href="#main" class="home-slide-btn">EXPLORE CAKES</a>
+        </div>
+    </div>
+
+    <!-- Slide 3: Bakery Specials -->
+    <div class="home-slide">
+        <img
+            src="pic3.png"
+            alt="Fantasy Bakery special treats"
+        >
+
+        <div class="home-slide-shade"></div>
+
+        <div class="home-slide-content">
+            <span>YOUR HAPPY PLACE</span>
+
+            <h1>
+                A Little Sweetness<br>
+                Goes a Long Way!
+            </h1>
+
+            <p>
+                Discover delicious treats for birthdays,
+                parties, and every happy occasion.
+            </p>
+
+            <a href="#main" class="home-slide-btn">SHOP NOW</a>
+        </div>
+    </div>
+
+    <!-- Slider Navigation Dots -->
+    <div class="home-slider-dots">
+        <button class="home-dot active" aria-label="Show slide 1"></button>
+        <button class="home-dot" aria-label="Show slide 2"></button>
+        <button class="home-dot" aria-label="Show slide 3"></button>
+    </div>
+
+</section>
+          
+
+
+<div class="main">
+  <div class="main-i">
+    <h1>Our Cake Collection</h1>
+    <br>
+    <h2>
+  A SLICE OF <span class="highlight">HAPPINESS</span></h2>
+  <p>Delight in our cakes, made to bring joy to your celebrations. Each slice is a perfect blend of love,<br> flavor, and artistry, making every moment truly special.</p>
+  <div class="container text-center my-5">
+
+  <!-- 💻 DESKTOP VIEW -->
+  <div class="row justify-content-center d-none d-md-flex g-5">
+
+    <div class="col">
+      <img src="PineappleCake001_600x.webp" class="img-fluid circle-img">
+      <h4 style="font-size: 40px; color: rgb(147, 71, 17); margin-top: 40px; font-style: Kenyan Coffee RG" >Regular Cakes</h4>
+    </div>
+
+    <div class="col">
+      <img src="CaramelSilkChocolateCake002_600x.webp" class="img-fluid circle-img">
+      <h4 style="font-size: 40px; color: rgb(147, 71, 17); margin-top: 40px; font-style: Kenyan Coffee RG" >Chocolate Cakes</h4>
+    </div>
+
+    <div class="col">
+      <img src="RasMalaiFusionCake004_600x.webp" class="img-fluid circle-img">
+      <h4 style="font-size: 40px; color: rgb(147, 71, 17); margin-top: 40px; font-style: Kenyan Coffee RG" >Fusion Cakes</h4>
+    </div>
+
+  </div>
+
+
+  <!-- 📱 MOBILE SLIDER -->
+  <div id="cakeSlider" class="carousel slide d-md-none" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active text-center">
+        <img src="PineappleCake001_600x.webp" class="circle-img">
+        <h4 style="font-size: 40px; color: rgb(147, 71, 17); margin-top: 40px; font-style: Kenyan Coffee RG">Regular Cakes</h4>
+      </div>
+
+      <div class="carousel-item text-center">
+        <img src="CaramelSilkChocolateCake002_600x.webp" class="circle-img">
+        <h4 style="font-size: 40px; color: rgb(147, 71, 17); margin-top: 40px; font-style: Kenyan Coffee RG">Chocolate Cakes</h4>
+      </div>
+
+      <div class="carousel-item text-center">
+        <img src="RasMalaiFusionCake004_600x.webp" class="circle-img">
+        <h4 style="font-size: 40px; color: rgb(147, 71, 17); margin-top: 40px; font-style: Kenyan Coffee RG">Fusion Cakes</h4>
+      </div>
+
+    </div>
+ <button class="carousel-control-prev" type="button" data-bs-target="#cakeSlider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon "></span>
+    </button>
+
+    <!-- 🔥 RIGHT ARROW -->
+    <button class="carousel-control-next" type="button" data-bs-target="#cakeSlider" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<section class="story-section">
+    <div class="story-content-container">
+        
+        <div class="story-left-panel">
+            <span class="story-badge text-lg-start">Meet Fantasy Bakery</span>
+            
+            <div class="story-headline-box">
+                <h2 class="story-title">Our <br>
+                  <span class="d-block">Sweet</span>
+                 Story</h2>
+            </div>
+            
+            <div class="story-red-line-text">
+                <p style="font-size: 20px;">At Fantasy Bakery, we specialize in creating <br> custom cakes that make every celebration <br>truly unforgettable.</p>
+            </div>
+            
+            <a href="#" class="story-about-btn">About Us</a>
+        </div>
+
+        <div class="story-middle-panel">
+            <img src="Asset_2_4x_1 (1).avif" alt="Original Stamp" class="story-stamp">
+            <img src="delicious-cake-cakestand-removebg-preview_1_1.webp" alt="Middle Cake" class="arch-cake-img">
+            <div class="story-brown-arch"></div>
+           
+        </div>
+
+        <div class="story-right-panel">
+            <p class="story-desc">From weddings to birthdays, Fantasy Bakery crafts personalized cakes to make every moment sweeter.</p>
+            <p class="story-sub-desc">Your perfect cake, designed just for you</p>
+            
+            <div class="story-combo-container">
+                <div class="story-combo-box">
+                  <div class="mid-banner-right-icon-box">  
+  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0928/7440/8210/files/Icon.png?v=1741082742" width="35" height="35" alt="gift img">
+  </div>
+                   
+                  
+<p class="combo-text" style="font-size: 30px;">Customize your combo.<br> Standard pricing applies</p>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="insta-section">
+
+  <h2 class="insta-title " >MOMENTS IN THE <span>MAKING</span>
+  <p>Watch real-life celebrations! See how our cakes, gift hampers, and treats bring joy to every occasion. Follow us for more sweet moments.
+
+Instagram post with the caption: Straight out of a wizarding dream ✨
+
+For the ones who never stop...
+
+</p></h2>
+
+  <div class="insta-slider">
+
+    
+    <div class="insta-card">
+      <img src="fan1.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- repeat up to 20 -->
+    <div class="insta-card">
+      <img src="fan2.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan3.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan4.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan5.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan6.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan7.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan8.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan9.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan10.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan11.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan12.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan13.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan14.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan15.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan16.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan17.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan18.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="fan19.png">
+      <div class="overlay">
+        <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+      </div>
+    <a href="https://www.instagram.com/fantasybakeryindore/?utm_source=ig_web_button_share_sheet" class="insta-btn" target="_blank">
+    Follow us on Instagram
+  </a>
+</section>
+
+<div class="project">
+  <img src="Proejct-Charcoal.png" alt="Project charoal" >
+</div>
+<div class="container-i">
+    <h3 class="headings">MOST LOVED</h3>
+    <p class="subs-heading">Discover our most-loved cakes, baked to perfection and adored by all! Each slice is a piece of heaven you won't want to miss.</p>
+
+    <div id="cake-grid" class="cake-grid d-none d-md-flex">
+        </div>
+
+    <div id="cakeSlider" class="carousel slide d-md-none" data-bs-ride="carousel">
+        <div class="carousel-inner" id="slider-content">
+            </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#cakeSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0,0,0,0.5); border-radius: 50%;"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#cakeSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgba(0,0,0,0.5); border-radius: 50%;"></span>
+        </button>
+    </div>
+</div>
+
+<div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+<section class="section-container">
+        <div class="header-box">
+            <h3><span>WHY CHOOSE</span> FANTASY BAKERY</h3>
+            <p>At Fantasy Bakery, we believe that every bite should be a moment of joy. Whether you’re enjoying a warm, freshly baked pastry or<br> indulging in a decadent cake, we create more than just desserts we create memories.
+
+</p>
+        </div>
+
+        <div class="slider-wrapper">
+            <div class="cards-container">
+                
+                <div class="cards">
+                    <div class="icon-circle">
+                        <img src="download (2).png" alt="Quality">
+                    </div>
+                    <h3>Unmatched Quality</h3>
+                    <p>We craft each treat with the finest ingredients.</p>
+                </div>
+
+                <div class="cards">
+                    <div class="icon-circle">
+                        <img src="download.png" alt="Custom">
+                    </div>
+                    <h3>Custom Creations</h3>
+                    <p>Personalized cakes designed for every occasion.</p>
+                </div>
+
+                <div class="cards">
+                    <div class="icon-circle">
+                        <img src="download (1).png" alt="Eco">
+                    </div>
+                    <h3>Sustainability First</h3>
+                    <p>Committed to eco-friendly packaging.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="wa-float">
+     
+    </a>
+    <section class="full-bg">
+<div class="slider-wrapperr">
+  <div class="cards-container-i" id="slider">
+
+    <div class="cards-s">
+      <div class="icon-circles">
+        <img src="Natural_Food_200x.avif" alt="Fresh">
+      </div>
+      <div class="card-text">Always Fresh</div>
+    </div>
+
+    <div class="cards-s">
+      <div class="icon-circles">
+        <img src="Ingredients_200x.avif" alt="Ingredients">
+      </div>
+      <div class="card-text">Best Ingredients</div>
+    </div>
+
+    <div class="cards-s">
+      <div class="icon-circles">
+        <img src="healthcare_1_200x.avif" alt="Packaging">
+      </div>
+      <div class="card-text">Careful Packaging</div>
+    </div>
+
+    <div class="cards-s">
+      <div class="icon-circles">
+        <img src="3344080_1_200x.avif" alt="Satisfaction">
+      </div>
+      <div class="card-text">Customer Satisfaction</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<footer class="site-footer">
+  <div class="container-fluid px-lg-5">
+    
+    <!-- Top 5-Column Area -->
+    <div class="row g-4 footer-top">
+      
+      <!-- Column 1: Brand & Social -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <img src="Fantasy_Logo_135x.png" alt="Fantasy Bakery" class="footer-logo">
+        <p class="footer-desc">
+          Step into our bakery and enjoy a world of flavors and aromas. Our friendly staff is here to assist you!
+        </p>
+        <div class="footer-social-links">
+          <a href="#" class="social-circle" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/fantasybakeryindore/" target="_blank" class="social-circle" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: POLICY INFO -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="footer-heading">POLICY INFO</h6>
+        <ul class="footer-links">
+          <li><a href="shipping-policy.html">Shipping Policy</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="refund-policy.html">Return & Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: COMPANY -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h6 class="footer-heading">COMPANY</h6>
+        <ul class="footer-links">
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="project-charcoal.html">Project Charcoal</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: MAIN MENU -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <h6 class="footer-heading">MAIN MENU</h6>
+        <ul class="footer-links">
+          <li><a href="cake.html">Cakes</a></li>
+          <li><a href="rakhi.html">Rakhi Cakes</a></li>
+          <li><a href="fathersday.html">Father's Day Cakes</a></li>
+          <li><a href="mothersday.html">Mother's Day Cakes</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 5: CUSTOMIZATION & SUBSCRIBE -->
+      <div class="col-12 col-md-8 col-lg-3">
+        <h6 class="footer-heading">CUSTOMIZATION</h6>
+        <a href="https://wa.me/919685410772?text=Hi%2C+I%27m+interested+in+customization%21" class="footer-whatsapp-link" target="_blank">
+          Whatsapp <i class="fa-brands fa-whatsapp text-success fs-5"></i>
+        </a>
+        
+        <form class="newsletter-form mt-2" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" placeholder="Your email" class="newsletter-input" required>
+          <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright & Payment Row -->
+    <div class="footer-bottom">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <p class="copyright-text">
+          Fantasy © 2026, All Rights Reserved. Made with <span class="heart">❤️</span> in India By EagleEye Digital
+        </p>
+
+        <!-- Payment Badges -->
+        <div class="payment-icons">
+          <span class="pay-badge pay-amex">AMEX</span>
+          <span class="pay-badge pay-mastercard" title="Mastercard"></span>
+          <span class="pay-badge" style="background:#f79e1b; color:#fff;" title="Maestro">Maestro</span>
+          <span class="pay-badge pay-gpay">GPay</span>
+          <span class="pay-badge pay-visa">VISA</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".home-slide");
+    const dots = document.querySelectorAll(".home-dot");
+
+    if (slides.length < 2) {
+        console.log("Slider mein 2 ya zyada slides add karo.");
+        return;
+    }
+
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        dots.forEach(dot => dot.classList.remove("active"));
+
+        current = index;
+        slides[current].classList.add("active");
+
+        if (dots[current]) {
+            dots[current].classList.add("active");
+        }
+    }
+
+    setInterval(function () {
+        showSlide((current + 1) % slides.length);
+    }, 5000);
+});
+</script>
+<script src="script.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

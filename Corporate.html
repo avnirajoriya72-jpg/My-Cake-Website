@@ -1,0 +1,833 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookies</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ================================
+       RESPONSIVE IMAGE CARD SLIDERS
+    ================================= */
+
+    .fx .fx-slider-controls { display: none; }
+
+    /* Tablet */
+    @media (min-width: 577px) and (max-width: 900px) {
+      .fx .fx-cards {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        padding: 12px 5px 22px;
+        gap: 20px;
+      }
+
+      .fx .fx-cards::-webkit-scrollbar { display: none; }
+
+      .fx .fx-cards .fx-card {
+        flex: 0 0 calc(50% - 10px);
+        width: calc(50% - 10px);
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+
+      .fx .fx-slider-controls { display: flex; }
+    }
+
+    /* Mobile */
+    @media (max-width: 576px) {
+      .fx .fx-sec { padding: 42px 0; overflow: hidden; }
+      .fx .fx-sec h2 { font-size: 42px; padding: 0 12px; }
+      .fx .fx-sub {
+        font-size: 13px;
+        line-height: 1.6;
+        padding: 0 18px;
+        margin: 12px 0 25px;
+      }
+
+      .fx .fx-cards {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 16px !important;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding: 10px 18px 20px !important;
+        margin: 0 !important;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .fx .fx-cards::-webkit-scrollbar { display: none; }
+
+      .fx .fx-cards .fx-card {
+        flex: 0 0 82% !important;
+        width: 82% !important;
+        max-width: 82% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        scroll-snap-align: center;
+        border-radius: 25px;
+        padding: 12px;
+      }
+
+      .fx .fx-card .fx-im {
+        width: 100%;
+        height: 260px !important;
+        border-radius: 19px;
+        overflow: hidden;
+      }
+
+      .fx .fx-card .fx-im img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .fx .fx-card h3 { font-size: 19px; margin: 14px 0 6px; }
+      .fx .fx-tall { padding-bottom: 15px !important; }
+      .fx .fx-tall .fx-im { height: 300px !important; }
+      .fx .fx-cake { padding: 0 !important; }
+      .fx .fx-cake .fx-im { height: 250px !important; }
+      .fx .fx-cake h3 { font-size: 34px; }
+      .fx .fx-cake p { font-size: 15px; padding: 0 5px 12px; }
+
+      .fx .fx-slider-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 4px auto 15px;
+      }
+
+      .fx .fx-slider-arrow {
+        width: 36px;
+        height: 36px;
+        border: 1px solid #7a3e18;
+        background: #fff6e8;
+        color: #7a3e18;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 17px;
+      }
+
+      .fx .fx-slider-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .fx .fx-slider-dot {
+        width: 8px;
+        height: 8px;
+        background: #d8c4ae;
+        border: 0;
+        border-radius: 50%;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .fx .fx-slider-dot.active {
+        width: 22px;
+        border-radius: 10px;
+        background: #7a3e18;
+      }
+
+      .fx .fx-bw { padding: 20px 12px; }
+      .fx .fx-banner {
+        padding: 35px 18px !important;
+        border-radius: 35px !important;
+        gap: 15px;
+        clip-path: none;
+      }
+
+      .fx .fx-pics { height: 240px; width: 100%; }
+      .fx .fx-p1 {
+        width: 190px;
+        height: 190px;
+        left: 50%;
+        top: 25px;
+        transform: translateX(-50%);
+      }
+      .fx .fx-p2 { width: 85px; height: 85px; left: 0; top: 55px; }
+      .fx .fx-p3 { width: 85px; height: 85px; right: 0; top: 10px; }
+      .fx .fx-p4 { width: 85px; height: 80px; right: 15px; bottom: 0; }
+
+      .fx .fx-banner h2 { font-size: 39px; }
+      .fx .fx-tag { font-size: 21px; }
+      .fx .fx-banner p { font-size: 13px; }
+      .fx .fx-btn { font-size: 15px; padding: 12px 24px; }
+      .fx .fx-hero { padding: 55px 22px 25px; gap: 5px; }
+      .fx .fx-hero h1 { font-size: 49px; }
+      .fx .fx-hero p { font-size: 15px; }
+      .fx .fx-collage {
+        height: 310px;
+        transform: scale(.72);
+        transform-origin: top left;
+        width: 135%;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 380px) {
+      .fx .fx-cards .fx-card {
+        flex-basis: 88% !important;
+        max-width: 88% !important;
+      }
+      .fx .fx-card .fx-im { height: 225px !important; }
+      .fx .fx-tall .fx-im { height: 270px !important; }
+    }
+
+    /* ================================
+       RESPONSIVE BANNER BACKGROUNDS
+       Tablet + Mobile only
+    ================================= */
+    @media (max-width: 900px) {
+      .fx .fx-grazing-background-banner .fx-banner,
+      .fx .fx-cake-background-banner .fx-banner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 420px;
+        padding: 40px 20px !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 28px !important;
+        border: none;
+        clip-path: none;
+        overflow: hidden;
+      }
+
+      .fx .fx-grazing-background-banner .fx-banner {
+        background-image:
+          linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.55)),
+          url("Grazing_Table_Mobile.png");
+      }
+
+      .fx .fx-cake-background-banner .fx-banner {
+        background-image:
+          linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.58)),
+          url("Cake_CTA_IMG.png");
+      }
+
+      .fx .fx-grazing-background-banner .fx-pics,
+      .fx .fx-cake-background-banner .fx-pics { display: none; }
+
+      .fx .fx-grazing-background-banner .fx-txt,
+      .fx .fx-cake-background-banner .fx-txt {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 750px;
+        text-align: center;
+      }
+
+      .fx .fx-grazing-background-banner h2,
+      .fx .fx-cake-background-banner h2 {
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0,0,0,.6);
+      }
+
+      .fx .fx-grazing-background-banner .fx-tag,
+      .fx .fx-cake-background-banner .fx-tag {
+        color: #fff;
+        border-color: #fff;
+      }
+
+      .fx .fx-grazing-background-banner p,
+      .fx .fx-cake-background-banner p { color: #fff; }
+
+      .fx .fx-grazing-background-banner .fx-btn,
+      .fx .fx-cake-background-banner .fx-btn {
+        background: #fee3b4;
+        color: #000;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .fx .fx-grazing-background-banner .fx-banner,
+      .fx .fx-cake-background-banner .fx-banner {
+        min-height: 420px;
+        padding: 35px 18px !important;
+      }
+
+      .fx .fx-grazing-background-banner h2,
+      .fx .fx-cake-background-banner h2 { font-size: 43px; }
+
+      .fx .fx-grazing-background-banner p,
+      .fx .fx-cake-background-banner p { font-size: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header-main">
+    <div class="nav-wrapper">
+      <div class="logo-area">
+        <a href="Home.html">
+          <img src="Fantasy_Logo_135x.png" class="logo-img" alt="logo">
+        </a>
+      </div>
+
+      <div class="search-area">
+        <div class="search-bar">
+          <input type="text" placeholder="Search Products...">
+          <button class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="actions-area">
+        <div class="user-auth">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <div class="auth-text">
+            <a href="#">Sign In</a> <span>/</span> <a href="#">Register</a>
+          </div>
+        </div>
+
+        <div class="icon-item" onclick="window.location.href='wishlist.html'" style="cursor:pointer">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge wish-badge">0</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="badge cart-badge">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-dark navbar-expand-lg custom-nav">
+    <div class="container-fluid px-0">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="cake.html">Cake</a></li>
+          <li class="nav-item"><a class="nav-link" href="cookies.html">Cookies</a></li>
+          <li class="nav-item"><a class="nav-link" href="combos.html">Combos</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop By Occasion</a></li>
+          <li class="nav-item"><a class="nav-link" href="Wedding.html">Wedding</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .fx {
+      --fxb: #7a3e18;
+      --fxc: #fff6e8;
+      --fxp: #fee3b4;
+      --fxg: #ffc766;
+      --fxs: #e3dbbd;
+      font-family: 'Outfit', sans-serif;
+      color: #000;
+      display: block;
+      width: 100%;
+    }
+
+    .fx * { box-sizing: border-box; }
+    .fx h1, .fx h2, .fx h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: .5px;
+    }
+    .fx img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .fx .fx-ph { background: linear-gradient(135deg, #f3dcb8, #e9c590); }
+    .fx .fx-btn {
+      display: inline-block;
+      background: var(--fxp);
+      color: #000;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,.2);
+      font-size: 18px;
+    }
+
+    /* HERO */
+    .fx .fx-hero {
+      background: var(--fxb);
+      color: #fff;
+      padding: 90px 6vw 110px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      overflow: hidden;
+    }
+    .fx .fx-hero h1 { font-size: clamp(52px, 7vw, 96px); line-height: 1.02; }
+    .fx .fx-hero p { font-size: 19px; line-height: 1.5; max-width: 620px; margin: 24px 0 32px; }
+    .fx .fx-collage { position: relative; height: 520px; }
+    .fx .fx-tile {
+      position: absolute;
+      background: #fff;
+      border: 6px solid #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 6px 14px rgba(0,0,0,.25);
+    }
+    .fx .fx-t1 { width: 190px; height: 230px; left: 0; top: 90px; transform: rotate(25deg); }
+    .fx .fx-t2 { width: 200px; height: 230px; left: 200px; top: 20px; transform: rotate(25deg); }
+    .fx .fx-t3 { width: 210px; height: 230px; left: 20px; top: 270px; transform: rotate(25deg); }
+    .fx .fx-t4 { width: 200px; height: 230px; left: 210px; top: 240px; transform: rotate(-15deg); }
+    .fx .fx-t5 { width: 300px; height: 380px; right: -20px; top: 30px; transform: rotate(-45deg); }
+
+    /* SECTIONS */
+    .fx .fx-sec { padding: 60px 6vw; text-align: center; }
+    .fx .fx-sec h2 { font-size: clamp(40px, 5vw, 64px); }
+    .fx .fx-sec h2 span { color: var(--fxb); }
+    .fx .fx-sub { text-transform: uppercase; font-size: 16px; margin: 14px 0 40px; }
+
+    /* CARDS */
+    .fx .fx-cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 26px;
+      justify-content: center;
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+    .fx .fx-card {
+      display: block;
+      background: #fff;
+      border: 0;
+      border-radius: 34px;
+      padding: 15px;
+      width: calc(25% - 20px);
+      min-width: 240px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.1);
+      text-align: left;
+    }
+    .fx .fx-card .fx-im { height: 325px; border-radius: 24px; overflow: hidden; }
+    .fx .fx-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0;
+      margin: 16px 0 8px;
+    }
+    .fx .fx-tall { padding-bottom: 42px; }
+    .fx .fx-tall .fx-im { height: 410px; }
+
+    /* BANNERS */
+    .fx .fx-bw { padding: 30px 6vw; }
+    .fx .fx-banner {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--fxb);
+      color: #fff;
+      padding: 70px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      border-radius: 90px;
+      border-top: 10px solid var(--fxs);
+      border-bottom: 10px solid var(--fxs);
+      clip-path: polygon(
+        0 8%, 6% 4%, 14% 10%, 24% 3%, 34% 9%, 46% 2%,
+        58% 9%, 70% 4%, 82% 10%, 92% 3%, 100% 8%,
+        100% 92%, 92% 97%, 82% 91%, 70% 98%, 58% 92%,
+        46% 99%, 34% 92%, 22% 98%, 10% 92%, 0 96%
+      );
+    }
+    .fx .fx-pics { position: relative; height: 340px; }
+    .fx .fx-p {
+      position: absolute;
+      border: 5px solid var(--fxs);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,.3);
+    }
+    .fx .fx-p1 { width: 270px; height: 260px; left: 90px; top: 40px; }
+    .fx .fx-p2 { width: 120px; height: 110px; left: 0; top: 70px; transform: rotate(-30deg); }
+    .fx .fx-p3 { width: 120px; height: 110px; right: 20px; top: 0; transform: rotate(-30deg); }
+    .fx .fx-p4 { width: 110px; height: 100px; right: 70px; bottom: 20px; }
+    .fx .fx-txt { text-align: center; }
+    .fx .fx-banner h2 { font-size: clamp(40px, 4.4vw, 60px); }
+    .fx .fx-tag {
+      display: inline-block;
+      border: 1px solid var(--fxs);
+      color: var(--fxs);
+      font-size: clamp(24px, 2.6vw, 34px);
+      font-weight: 300;
+      padding: 2px 10px;
+      margin: 14px 0 20px;
+      text-transform: uppercase;
+    }
+    .fx .fx-banner p {
+      text-transform: uppercase;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 420px;
+      margin: 0 auto 28px;
+    }
+    .fx .fx-banner .fx-btn { padding: 12px 28px; font-size: 17px; }
+
+    /* CUSTOM CAKES */
+    .fx .fx-cakes { background: var(--fxc); }
+    .fx .fx-cake { box-shadow: none; background: transparent; padding: 0; }
+    .fx .fx-cake .fx-im { height: 315px; border: 5px solid var(--fxg); border-radius: 12px; }
+    .fx .fx-cake h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      font-weight: 400;
+      margin: 14px 0 6px;
+      text-align: center;
+    }
+    .fx .fx-line { height: 6px; background: var(--fxb); border-radius: 6px; margin: 6px 0 14px; }
+    .fx .fx-cake p { font-size: 18px; line-height: 1.35; margin: 0; font-weight: 300; text-align: center; }
+
+    /* TABLET */
+    @media (max-width: 900px) {
+      .fx .fx-hero, .fx .fx-banner { grid-template-columns: 1fr; }
+      .fx .fx-collage { height: 420px; transform: scale(.8); transform-origin: top left; }
+      .fx .fx-banner { padding: 60px 24px; border-radius: 50px; }
+      .fx .fx-card { width: calc(50% - 14px); min-width: 0; }
+      .fx .fx-card .fx-im { height: 220px; }
+      .fx .fx-tall .fx-im { height: 300px; }
+      .fx .fx-cake .fx-im { height: 230px; }
+    }
+
+    @media (max-width: 520px) {
+      .fx .fx-card { width: 100%; }
+    }
+  </style>
+
+  <div class="fx">
+    <!-- HERO -->
+    <section class="fx-hero">
+      <div>
+        <h1>Celebrate Every Moment,<br>The Corporate Way</h1>
+        <p>Festive Hampers, Corporate Gifts and Ready To Eat Meal Boxes – Crafted to Delight and Celebrate Every Moment.</p>
+        <a href="#contact" class="fx-btn">CONTACT US</a>
+      </div>
+
+      <div class="fx-collage">
+        <div class="fx-tile fx-t1 fx-ph"><img src="Mini_Treats_900x.png" alt="" onerror="this.remove()"></div>
+        <div class="fx-tile fx-t2 fx-ph"><img src="Assorted_Chocolate_900x.png" alt="" onerror="this.remove()"></div>
+        <div class="fx-tile fx-t3 fx-ph"><img src="Food_Boxes_900x.png" alt="" onerror="this.remove()"></div>
+        <div class="fx-tile fx-t4 fx-ph"><img src="2_c9c27c39-55ff-4474-9dae-2b0ca42143eb_900x.png" alt="" onerror="this.remove()"></div>
+        <div class="fx-tile fx-t5 fx-ph"><img src="4_900x.png" alt="" onerror="this.remove()"></div>
+      </div>
+    </section>
+
+    <!-- MOMENTS OF INDULGENCE -->
+    <section class="fx-sec">
+      <h2><span>Moments of</span> Indulgence</h2>
+      <p class="fx-sub">From birthdays to corporate events, make every occasion truly memorable.</p>
+
+      <div class="fx-cards">
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Food_Boxes_900x.png" alt="Food Boxes" onerror="this.remove()"></div><h3>Food Boxes</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Grazing_Table_900x.png" alt="Grazing Tables" onerror="this.remove()"></div><h3>Grazing Tables</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Mini_Treats_900x.png" alt="Mini Delights" onerror="this.remove()"></div><h3>Mini Delights</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Trufflecake.png" alt="Truffles" onerror="this.remove()"></div><h3>Truffles</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Assorted_Chocolate_900x.png" alt="Chocolates" onerror="this.remove()"></div><h3>Chocolates</h3></div>
+      </div>
+    </section>
+
+    <!-- PREMIUM CELEBRATION -->
+    <section class="fx-sec">
+      <h2><span>Premium</span> Celebration</h2>
+      <p class="fx-sub">Curated luxury gift boxes crafted to delight clients, colleagues, and loved ones.</p>
+
+      <div class="fx-cards">
+        <div class="fx-card fx-tall"><div class="fx-im fx-ph"><img src="7_900x.png" alt="" onerror="this.remove()"></div></div>
+        <div class="fx-card fx-tall"><div class="fx-im fx-ph"><img src="2_c9c27c39-55ff-4474-9dae-2b0ca42143eb_900x.png" alt="" onerror="this.remove()"></div></div>
+        <div class="fx-card fx-tall"><div class="fx-im fx-ph"><img src="1_dc853557-4350-415b-af47-e5164c494304_900x.png" alt="" onerror="this.remove()"></div></div>
+        <div class="fx-card fx-tall"><div class="fx-im fx-ph"><img src="5_900x.png" alt="" onerror="this.remove()"></div></div>
+      </div>
+    </section>
+
+    <!-- GRAZING TABLE BANNER -->
+    <div class="fx-bw fx-grazing-background-banner">
+      <div class="fx-banner">
+        <div class="fx-pics">
+          <div class="fx-p fx-p2 fx-ph"><img src="Grazing_Table_Mobile.png" alt="Grazing Table"></div>
+          <div class="fx-p fx-p1 fx-ph"><img src="Grazing_Table_Mobile.png" alt="Grazing Table"></div>
+          <div class="fx-p fx-p3 fx-ph"><img src="Grazing_Table_Mobile.png" alt="Grazing Table"></div>
+          <div class="fx-p fx-p4 fx-ph"><img src="Grazing_Table_Mobile.png" alt="Grazing Table"></div>
+        </div>
+
+        <div class="fx-txt">
+          <h2>Grazing Table Setups</h2>
+          <div class="fx-tag">Custom Delights and Mini Treats</div>
+          <p>Planning a kitty party, corporate event or a kid's birthday? Delight your guests with our exclusive range of grazing table platters</p>
+          <a href="#book" class="fx-btn">BOOK NOW</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOM CAKE DELIGHTS -->
+    <section class="fx-sec fx-cakes">
+      <h2><span>Custom Cake</span> Delights</h2>
+      <p class="fx-sub">Experience the joy of personalized cakes, crafted to perfection for every celebration and special moment.</p>
+
+      <div class="fx-cards">
+        <div class="fx-card fx-cake">
+          <div class="fx-im fx-ph"><img src="Wedding_Cakes_900x.png" alt="Wedding Cake" onerror="this.remove()"></div>
+          <h3>Wedding Cake</h3><div class="fx-line"></div>
+          <p>Customized Wedding Cakes Tailored Uniquely for Your Special Day.</p>
+        </div>
+        <div class="fx-card fx-cake">
+          <div class="fx-im fx-ph"><img src="Theme_Cake_900x.png" alt="Theme Cake" onerror="this.remove()"></div>
+          <h3>Theme Cake</h3><div class="fx-line"></div>
+          <p>Creative Themed Cakes Bringing Imagination to Life.</p>
+        </div>
+        <div class="fx-card fx-cake">
+          <div class="fx-im fx-ph"><img src="Birthday_Cake_900x.png" alt="Birthday Cake" onerror="this.remove()"></div>
+          <h3>Birthday Cake</h3><div class="fx-line"></div>
+          <p>Delightful Birthday Cakes Crafted Just for Your Celebration.</p>
+        </div>
+        <div class="fx-card fx-cake">
+          <div class="fx-im fx-ph"><img src="Designer_Cake_900x.png" alt="Kids Cake" onerror="this.remove()"></div>
+          <h3>Kids Cake</h3><div class="fx-line"></div>
+          <p>Exquisite Cakes with Fun Designs for Little Ones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGNER & CUSTOM CAKES BANNER -->
+    <div class="fx-bw fx-cake-background-banner">
+      <div class="fx-banner">
+        <div class="fx-pics">
+          <div class="fx-p fx-p2 fx-ph"><img src="Cake_CTA_IMG.png" alt=""></div>
+          <div class="fx-p fx-p1 fx-ph"><img src="Cake_CTA_IMG.png" alt=""></div>
+          <div class="fx-p fx-p3 fx-ph"><img src="Cake_CTA_IMG.png" alt=""></div>
+          <div class="fx-p fx-p4 fx-ph"><img src="Cake_CTA_IMG.png" alt=""></div>
+        </div>
+
+        <div class="fx-txt">
+          <h2>Designer and Custom Cakes</h2>
+          <div class="fx-tag">With a Slice of Sweetness</div>
+          <p>From intimate gatherings to grand parties, make it memorable with our bespoke personalised cakes.</p>
+          <a href="#book" class="fx-btn">BOOK NOW</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELITE EXECUTIVE HAMPERS -->
+    <section class="fx-sec">
+      <h2><span>Elite Executive</span> Hampers</h2>
+      <p class="fx-sub">Premium hampers crafted to impress and celebrate your valuable bonds.</p>
+
+      <div class="fx-cards">
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Personalized_Hampers_900x.png" alt="" onerror="this.remove()"></div><h3>Hamper 1</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Classic_Gourmet_Hampers_900x.png" alt="" onerror="this.remove()"></div><h3>Hamper 2</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Custom_Celebration_Hamper_900x (1).png" alt="" onerror="this.remove()"></div><h3>Hamper 3</h3></div>
+        <div class="fx-card"><div class="fx-im fx-ph"><img src="Exclusive_Gifting_Hampers_da3dd897-d7f4-4f44-ae4b-23f742adfe15_900x.png" alt="" onerror="this.remove()"></div><h3>Hamper 4</h3></div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container-fluid px-lg-5">
+      <div class="row g-4 footer-top">
+        <div class="col-12 col-md-6 col-lg-3">
+          <img src="Fantasy_Logo_135x.png" alt="Fantasy Bakery" class="footer-logo">
+          <p class="footer-desc">Step into our bakery and enjoy a world of flavors and aromas. Our friendly staff is here to assist you!</p>
+          <div class="footer-social-links">
+            <a href="#" class="social-circle" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/fantasybakeryindore/" target="_blank" class="social-circle" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">POLICY INFO</h6>
+          <ul class="footer-links">
+            <li><a href="shipping-policy.html">Shipping Policy</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="refund-policy.html">Return &amp; Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">COMPANY</h6>
+          <ul class="footer-links">
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="project-charcoal.html">Project Charcoal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h6 class="footer-heading">MAIN MENU</h6>
+          <ul class="footer-links">
+            <li><a href="cake.html">Cakes</a></li>
+            <li><a href="rakhi.html">Rakhi Cakes</a></li>
+            <li><a href="fathersday.html">Father's Day Cakes</a></li>
+            <li><a href="mothersday.html">Mother's Day Cakes</a></li>
+            <li><a href="Corporate.html">coporate Cakes</a></li>
+            <li><a href="Valentines.html">Valentins Cakes</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-3">
+          <h6 class="footer-heading">CUSTOMIZATION</h6>
+          <a href="https://wa.me/919685410772?text=Hi%2C+I%27m+interested+in+customization%21" class="footer-whatsapp-link" target="_blank">
+            Whatsapp <i class="fa-brands fa-whatsapp text-success fs-5"></i>
+          </a>
+
+          <form class="newsletter-form mt-2" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Your email" class="newsletter-input" required>
+            <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+          <p class="copyright-text">
+            Fantasy © 2026, All Rights Reserved. Made with <span class="heart">❤️</span> in India By EagleEye Digital
+          </p>
+
+          <div class="payment-icons">
+            <span class="pay-badge pay-amex">AMEX</span>
+            <span class="pay-badge pay-mastercard" title="Mastercard"></span>
+            <span class="pay-badge" style="background:#f79e1b; color:#fff;" title="Maestro">Maestro</span>
+            <span class="pay-badge pay-gpay">GPay</span>
+            <span class="pay-badge pay-visa">VISA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sliders = document.querySelectorAll(".fx .fx-cards");
+
+      sliders.forEach(function (slider) {
+        const cards = Array.from(slider.children);
+        if (cards.length <= 1) return;
+
+        const controls = document.createElement("div");
+        controls.className = "fx-slider-controls";
+
+        const prev = document.createElement("button");
+        prev.className = "fx-slider-arrow";
+        prev.type = "button";
+        prev.innerHTML = "&#10094;";
+        prev.setAttribute("aria-label", "Previous slide");
+
+        const dots = document.createElement("div");
+        dots.className = "fx-slider-dots";
+
+        const next = document.createElement("button");
+        next.className = "fx-slider-arrow";
+        next.type = "button";
+        next.innerHTML = "&#10095;";
+        next.setAttribute("aria-label", "Next slide");
+
+        cards.forEach(function (card, index) {
+          const dot = document.createElement("button");
+          dot.className = "fx-slider-dot";
+          dot.type = "button";
+          dot.setAttribute("aria-label", "Go to slide " + (index + 1));
+          dot.addEventListener("click", function () {
+            scrollToCard(index);
+          });
+          dots.appendChild(dot);
+        });
+
+        controls.appendChild(prev);
+        controls.appendChild(dots);
+        controls.appendChild(next);
+        slider.insertAdjacentElement("afterend", controls);
+
+        function scrollToCard(index) {
+          const card = cards[index];
+          slider.scrollTo({
+            left: card.offsetLeft - slider.offsetLeft -
+              (slider.clientWidth - card.clientWidth) / 2,
+            behavior: "smooth"
+          });
+        }
+
+        function updateDots() {
+          let activeIndex = 0;
+          let smallestDistance = Infinity;
+
+          cards.forEach(function (card, index) {
+            const distance = Math.abs(
+              card.getBoundingClientRect().left -
+              slider.getBoundingClientRect().left
+            );
+
+            if (distance < smallestDistance) {
+              smallestDistance = distance;
+              activeIndex = index;
+            }
+          });
+
+          dots.querySelectorAll(".fx-slider-dot").forEach(function (dot, index) {
+            dot.classList.toggle("active", index === activeIndex);
+          });
+        }
+
+        prev.addEventListener("click", function () {
+          const active = dots.querySelector(".active");
+          const index = Array.from(dots.children).indexOf(active);
+          scrollToCard(Math.max(0, index - 1));
+        });
+
+        next.addEventListener("click", function () {
+          const active = dots.querySelector(".active");
+          const index = Array.from(dots.children).indexOf(active);
+          scrollToCard(Math.min(cards.length - 1, index + 1));
+        });
+
+        slider.addEventListener("scroll", updateDots);
+        window.addEventListener("resize", updateDots);
+        updateDots();
+      });
+    });
+  </script>
+</body>
+</html>
+

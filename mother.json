@@ -1,0 +1,37 @@
+[
+  {
+    "image": "cake28.png",
+    "name": "Mother's Day Rabri Almond Cake",
+    "price": "Rs.730"
+  },
+
+  {
+    "image": "cake27.png",
+    "name": "Mother's Day Pineapple Cake",
+    "price": "Rs.620"
+  },
+
+  {
+    "image": "cake23.png",
+    "name": "Mother's Day Belgian Chocolate Cake",
+    "price": "Rs.800"
+  },
+
+  {
+    "image": "cake26.png",
+    "name": "Mother's Day Ferrero Rocher Cake",
+    "price": "Rs.950"
+  },
+
+  {
+    "image": "cake43.png",
+    "name": "Mother's Day Red Velvet Cake",
+    "price": "Rs.690"
+  },
+
+  {
+    "image": "cake39.png",
+    "name": "Mother's Day Chocolate Photo Cake",
+    "price": "Rs.760"
+  }
+]

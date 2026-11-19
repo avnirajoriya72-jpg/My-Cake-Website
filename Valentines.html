@@ -1,0 +1,1282 @@
+     
+     
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Day Cake | Fantasy Bakery</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Valentine page */
+        .valentine-page {
+            padding: 20px 7% 50px;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #222;
+        }
+
+        .valentine-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            font-size: 19px;
+            flex-wrap: wrap;
+        }
+
+        .valentine-breadcrumb a {
+            color: #777;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .valentine-breadcrumb span,
+        .valentine-breadcrumb strong {
+            color: #7a3618;
+        }
+
+        /* Banner */
+        .valentine-banner {
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 25px;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: #fcebed;
+            background-image: url("FNYC_Valentine_page_banner_BG.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .valentine-hearts {
+            width: 15%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .valentine-hearts img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: contain;
+ animation: heartGlow 5s ease-in-out infinite;
+}
+
+            
+
+
+@keyframes heartGlow {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 0px pink);
+    }
+
+    50% {
+        transform: translateY(-90px) scale(1.05);
+        filter: drop-shadow(0 0 12px pink);
+    }
+}
+
+        .valentine-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        .valentine-content h1 {
+            font-family: Georgia, serif;
+            color: #d83e5c;
+            font-size: clamp(27px, 3vw, 40px);
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .valentine-content p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .valentine-order-btn {
+            display: inline-block;
+            background: #d83e5c;
+            color: #fff;
+            padding: 10px 38px;
+            border-radius: 13px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .valentine-order-btn:hover {
+            background: #a91f40;
+            color: #fff;
+        }
+
+        .valentine-banner-images {
+            width: 35%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .valentine-banner-cake {
+            width: 72%;
+            max-height: 245px;
+            object-fit: contain;
+        }
+
+        .valentine-banner-roses {
+            width: 28%;
+            max-height: 170px;
+            object-fit: contain;
+        }
+
+        /* Filter and sort row */
+        .valentine-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .valentine-filter-btn {
+            background: #ffeaed;
+            color: #8c3c43;
+            border: 2px solid #ffd0d5;
+            border-radius: 30px;
+            padding: 10px 28px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .valentine-sort {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .valentine-sort label {
+            font-size: 17px;
+            white-space: nowrap;
+        }
+
+        .valentine-sort select {
+            min-width: 230px;
+            padding: 11px 18px;
+            border: 2px solid #f4d9dc;
+            border-radius: 30px;
+            background: #f7f7f7;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* Product cards */
+        .valentine-products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 38px;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .valentine-card {
+            min-width: 0;
+            padding: 19px;
+            border: 2px solid #fbe0e1;
+            border-radius: 25px;
+            background: #fff;
+            overflow: hidden;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .valentine-card:hover {
+            box-shadow: 0 8px 22px rgba(122, 54, 24, 0.10);
+        }
+
+        .valentine-product-image {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 19px;
+            background: #fff0f2;
+        }
+
+        .valentine-product-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .valentine-wishlist {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: rgba(80, 40, 30, 0.35);
+            color: #fff;
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        .valentine-product-info {
+            padding: 15px 0 3px;
+        }
+
+        .valentine-product-info h3 {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 0 0 9px;
+            color: #171717;
+        }
+
+        .valentine-product-info p {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            color: #171717;
+        }
+
+        /* Sweet Memories section */
+        .insta2-section {
+            padding: 45px 7%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .insta2-title {
+            margin: 0 0 28px;
+            color: #7a3618;
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 700;
+        }
+
+        .insta2-title span {
+            color: #d83e5c;
+        }
+
+        .insta2-container {
+            position: relative;
+            width: 100%;
+            padding: 0 35px;
+            box-sizing: border-box;
+        }
+
+        .insta2-slider {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 8px 2px 16px;
+        }
+
+        .insta2-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .insta2-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: 210px;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #fff0f2;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+        }
+
+        .insta2-card img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .insta2-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .insta2-btn {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #7a3618;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insta2-left {
+            left: 0;
+        }
+
+        .insta2-right {
+            right: 0;
+        }
+
+        .insta2-follow {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 22px;
+            border-radius: 25px;
+            background: #7a3618;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.25s ease;
+        }
+
+        .insta2-follow:hover {
+            background: #d83e5c;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .insta2-section {
+                padding: 35px 4%;
+            }
+
+            .insta2-container {
+                padding: 0 27px;
+            }
+
+            .insta2-card {
+                flex-basis: 72%;
+                min-width: 190px;
+                height: 240px;
+            }
+        }
+     
+     
+     /* Responsive */
+        @media (max-width: 1100px) {
+            .valentine-page {
+                padding-left: 4%;
+                padding-right: 4%;
+            }
+
+            .valentine-products {
+                gap: 22px;
+            }
+
+            .valentine-card {
+                padding: 14px;
+            }
+
+            .valentine-product-image {
+                height: 330px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .valentine-banner {
+                flex-wrap: wrap;
+                padding: 18px 12px;
+            }
+
+            .valentine-hearts {
+                width: 15%;
+            }
+
+            .valentine-content {
+                min-width: 75%;
+            }
+
+            .valentine-content p {
+                font-size: 14px;
+            }
+
+            .valentine-banner-images {
+                width: 100%;
+                max-height: 190px;
+
+            }
+
+            .valentine-banner-cake {
+                max-height: 180px;
+             animation: cakeZoomFloat 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes cakeZoomFloat {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.08) translateY(-6px);
+    }
+}
+
+            .valentine-banner-roses {
+                max-height: 130px;
+            }
+
+            .valentine-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .valentine-sort {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .valentine-sort select {
+                min-width: 0;
+                width: 65%;
+            }
+
+            .valentine-products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .valentine-card {
+                padding: 10px;
+                border-radius: 17px;
+            }
+
+            
+
+            .valentine-product-info h3,
+            .valentine-product-info p {
+                font-size: 14px;
+            }
+
+            .valentine-wishlist {
+                width: 32px;
+                height: 32px;
+                top: 10px;
+                right: 10px;
+                font-size: 17px;
+            }
+        }
+
+        .valentine-product-image {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    border-radius: 19px;
+}
+
+.valentine-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+        @media (max-width: 420px) {
+            .valentine-products {
+                grid-template-columns: 1fr;
+            }
+
+            .valentine-product-image {
+                height: 300px;
+            }
+        }
+
+        /* Sweet Memories Instagram cards */
+        .insta2-section {
+            padding: 45px 7%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .insta2-title {
+            margin: 0 0 28px;
+            color: #7a3618;
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 700;
+        }
+
+        .insta2-title span {
+            color: #d83e5c;
+        }
+
+        .insta2-container {
+            position: relative;
+            width: 100%;
+            padding: 0 35px;
+            box-sizing: border-box;
+        }
+
+        .insta2-slider {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 8px 2px 16px;
+        }
+
+        .insta2-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .insta2-card {
+            flex: 0 0 calc(25% - 15px);
+            min-width: 210px;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #fff0f2;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+        }
+
+        .insta2-card img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .insta2-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .insta2-btn {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #7a3618;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insta2-left { left: 0; }
+        .insta2-right { right: 0; }
+
+        .insta2-follow {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 22px;
+            border-radius: 25px;
+            background: #7a3618;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.25s ease;
+        }
+
+        .insta2-follow:hover {
+            background: #d83e5c;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .insta2-section { padding: 35px 4%; }
+            .insta2-container { padding: 0 27px; }
+            .insta2-card {
+                flex-basis: 72%;
+                min-width: 190px;
+                height: 240px;
+            }
+        }
+        /* Mobile Product Slider */
+@media (max-width: 700px) {
+    .valentine-products {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 16px;
+        padding: 5px 4px 20px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .valentine-products::-webkit-scrollbar {
+        display: none;
+    }
+
+    .valentine-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        min-width: 0;
+    }
+
+    .valentine-product-image {
+        height: 350px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 420px) {
+    .valentine-products {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .valentine-card {
+        flex: 0 0 88%;
+    }
+
+    .valentine-product-image {
+        height: 320px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header-main">
+    <div class="nav-wrapper">
+
+        <div class="logo-area">
+            <a href="Home.html">
+                <img src="Fantasy_Logo_135x.png" class="logo-img" alt="Fantasy Bakery Logo">
+            </a>
+        </div>
+
+        <div class="search-area">
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products...">
+                <button class="search-icon" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="actions-area">
+            <div class="user-auth">
+                <i class="fa-regular fa-user"></i>
+                <div class="auth-text">
+                    <a href="#" onclick="openModal('login'); return false;">Sign In</a>
+                    <span>/</span>
+                    <a href="#" onclick="openModal('register'); return false;">Register</a>
+                </div>
+            </div>
+
+            <div class="icon-item" onclick="window.location.href='wishlist.html'" style="cursor:pointer">
+                <i class="fa-regular fa-heart"></i>
+                <span class="badge wish-badge" id="nav-wishlist-badge">0</span>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge cart-badge">0</span>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark navbar-expand-lg custom-nav">
+    <div class="container-fluid px-0">
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#menu"
+            aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="cake.html">Cake</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="cookies.html">Cookies</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="combos.html">Combos</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="shop.html"
+                        data-bs-toggle="dropdown">Shop By Occasion</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="rakhi.html">Rakhi Cakes</a></li>
+                        <li><a class="dropdown-item" href="fathersday.html">Fathers Day Cakes</a></li>
+                        <li><a class="dropdown-item" href="mothersday.html">Mothers Day Cakes</a></li>
+                        <li><a class="dropdown-item" href="corporate.html">Corporate Cakes</a></li>
+                        <li><a class="dropdown-item" href="valentine.html">Valentine Cakes</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="Wedding.html">Wedding</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Valentine Page Content -->
+<main class="valentine-page">
+
+    <div class="valentine-breadcrumb">
+        <a href="Home.html">Home</a>
+        <span>/</span>
+        <strong>Valentine Day Cake</strong>
+    </div>
+
+    <!-- Banner -->
+    <section class="valentine-banner">
+
+        <div class="valentine-hearts">
+            <img src="Heart_01.png" alt="Decorative hearts">
+        </div>
+
+        <div class="valentine-content">
+            <h1>Valentine's Day<br>Cake That Speak Love</h1>
+
+            <p>
+                Celebrate Romance with Thoughtfully Crafted<br>
+                Cakes from Fantasy Bakery
+            </p>
+
+            <a href="#valentine-cakes" class="valentine-order-btn">
+                Order Now
+            </a>
+        </div>
+
+        <div class="valentine-banner-images">
+            <img src="Cake_1.png" alt="Valentine floral cake"
+                class="valentine-banner-cake">
+
+            <img src="Rose_1_82a94e97-0db7-4fa3-b7ee-f43ae6692cc4.png" alt="Red roses"
+                class="valentine-banner-roses">
+        </div>
+
+    </section>
+
+
+        <!-- Filter and Sort -->
+    <section class="valentine-toolbar">
+
+        <button type="button" class="valentine-filter-btn" id="filterBtn">
+            <i class="fa-solid fa-sliders"></i>
+            Filter
+        </button>
+
+        <div class="valentine-sort">
+            <label for="sortSelect">Sort by</label>
+
+            <select id="sortSelect">
+                <option value="featured">Featured</option>
+                <option value="alpha-asc">Alphabetically, A-Z</option>
+                <option value="alpha-desc">Alphabetically, Z-A</option>
+                <option value="price-asc">Price, low to high</option>
+                <option value="price-desc">Price, high to low</option>
+            </select>
+        </div>
+
+    </section>
+
+    <!-- Product Cards -->
+    <section class="valentine-products" id="valentine-cakes">
+
+        <article class="valentine-card" data-price="3010">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_37_180x (2).jpg"
+                     alt="Valentine's Rose Petal Cake">
+                <button class="valentine-wishlist" aria-label="Add Rose Petal Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Rose Petal Cake</h3>
+                <p>From Rs.3,010</p>
+            </div>
+        </article>
+
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="Cake_1.png" alt="Valentine's Heartfull Love Cake">
+                <button class="valentine-wishlist" aria-label="Add Heartfull Love Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Heartfull Love Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+        <article class="valentine-card" data-price="1790">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_43_540x.jpg"
+                     alt="Valentine's Rosette Heart Cake">
+                <button class="valentine-wishlist" aria-label="Add Rosette Heart Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Rosette Heart Cake</h3>
+                <p>From Rs.1,790</p>
+            </div>
+        </article>
+
+        <!-- 4th Product Card -->
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_01_540x.jpg"
+                     alt="Valentine's Heart in Bloom Cake">
+                <button class="valentine-wishlist" aria-label="Add Heart in Bloom Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Heart in Bloom Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+        <!-- 5th Product Card -->
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_09_180x.jpg"
+                     alt="Valentine's Heart of Hearts Cake">
+                <button class="valentine-wishlist" aria-label="Add Heart of Hearts Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Heart of Hearts Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+        <!-- 6th Product Card -->
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_13_180x.jpg"
+                     alt="Valentine's Rose Heart Delight Cake">
+                <button class="valentine-wishlist" aria-label="Add Rose Heart Delight Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Rose Heart Delight Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+        <!-- 7th Product Card -->
+        <article class="valentine-card" data-price="1790">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_03_180x.jpg"
+                     alt="Valentine's Tri-Tone Roseate Cake">
+                <button class="valentine-wishlist" aria-label="Add Tri-Tone Roseate Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Tri-Tone Roseate Cake</h3>
+                <p>From Rs.1,790</p>
+            </div>
+        </article>
+
+        <!-- 8th Product Card -->
+        <article class="valentine-card" data-price="1690">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_32_360x.jpg"
+                     alt="Valentine's Signature Bow on Heart Cake">
+                <button class="valentine-wishlist" aria-label="Add Signature Bow Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Signature Bow on Heart Cake</h3>
+                <p>From Rs.1,690</p>
+            </div>
+        </article>
+
+        <!-- 9th Product Card -->
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_01_540x (1).jpg"
+                     alt="Valentine's Heart-Delight Cake">
+                <button class="valentine-wishlist" aria-label="Add Heart-Delight Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Heart-Delight Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+        <!-- 10th Product Card -->
+        <article class="valentine-card" data-price="1790">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_31_5557bee2-bde3-43c3-89f3-2562a163db7c_360x.jpg"
+                     alt="Valentine's Rose Garden Heart Cake">
+                <button class="valentine-wishlist" aria-label="Add Rose Garden Heart Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Rose Garden Heart Cake</h3>
+                <p>From Rs.1,790</p>
+            </div>
+        </article>
+
+        <!-- 11th Product Card -->
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_11_180x.jpg"
+                     alt="Valentine's Delicate Heart Bloom Cake">
+                <button class="valentine-wishlist" aria-label="Add Delicate Heart Bloom Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Delicate Heart Bloom Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+        <!-- 12th Product Card -->
+        <article class="valentine-card" data-price="1590">
+            <div class="valentine-product-image">
+                <img src="FNTC_Valentine_Day_Product_34_900x.jpg"
+                     alt="Valentine's Truffle Cake">
+                <button class="valentine-wishlist" aria-label="Add Truffle Cake to wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+            <div class="valentine-product-info">
+                <h3>Valentine's Truffle Cake</h3>
+                <p>From Rs.1,590</p>
+            </div>
+        </article>
+
+    </section>
+</main>
+
+<div class="container-ii">
+    <div id="cake-grid" class="cake-grid d-none d-md-flex"></div>
+</div>
+
+<!-- Sweet Memories Slider -->
+<section class="insta2-section">
+
+    <h2 class="insta2-title">
+        Capture Sweet <span>Moments!</span>
+    </h2>
+
+    <div class="insta2-container">
+
+        <button class="insta2-btn insta2-left"
+                onclick="insta2Scroll(-1)"
+                aria-label="Previous sweet memories">❮</button>
+
+        <div class="insta2-slider" id="insta2Slider"></div>
+
+        <button class="insta2-btn insta2-right"
+                onclick="insta2Scroll(1)"
+                aria-label="Next sweet memories">❯</button>
+
+    </div>
+
+    <a href="https://www.instagram.com/fantasybakeryindore/"
+       class="insta2-follow"
+       target="_blank"
+       rel="noopener">
+        <i class="fa-brands fa-instagram"></i> Follow us on Instagram
+    </a>
+</section>
+
+<!-- Benefits Section -->
+<section class="full-bg">
+    <div class="slider-wrapperr">
+        <div class="cards-container-i" id="slider">
+
+            <div class="cards-s">
+                <div class="icon-circles">
+                    <img src="Natural_Food_200x.avif" alt="Fresh">
+                </div>
+                <div class="card-text">Always Fresh</div>
+            </div>
+
+            <div class="cards-s">
+                <div class="icon-circles">
+                    <img src="Ingredients_200x.avif" alt="Ingredients">
+                </div>
+                <div class="card-text">Best Ingredients</div>
+            </div>
+
+            <div class="cards-s">
+                <div class="icon-circles">
+                    <img src="healthcare_1_200x.avif" alt="Packaging">
+                </div>
+                <div class="card-text">Careful Packaging</div>
+            </div>
+
+            <div class="cards-s">
+                <div class="icon-circles">
+                    <img src="3344080_1_200x.avif" alt="Satisfaction">
+                </div>
+                <div class="card-text">Customer Satisfaction</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container-fluid px-lg-5">
+
+        <div class="row g-4 footer-top">
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <img src="Fantasy_Logo_135x.png" alt="Fantasy Bakery" class="footer-logo">
+
+                <p class="footer-desc">
+                    Step into our bakery and enjoy a world of flavors and aromas.
+                    Our friendly staff is here to assist you!
+                </p>
+
+                <div class="footer-social-links">
+                    <a href="#" class="social-circle" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/fantasybakeryindore/"
+                       target="_blank" rel="noopener"
+                       class="social-circle" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2">
+                <h6 class="footer-heading">POLICY INFO</h6>
+                <ul class="footer-links">
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="refund-policy.html">Return & Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2">
+                <h6 class="footer-heading">COMPANY</h6>
+                <ul class="footer-links">
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="project-charcoal.html">Project Charcoal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2">
+                <h6 class="footer-heading">MAIN MENU</h6>
+                <ul class="footer-links">
+                    <li><a href="cake.html">Cakes</a></li>
+                    <li><a href="rakhi.html">Rakhi Cakes</a></li>
+                    <li><a href="fathersday.html">Father's Day Cakes</a></li>
+                    <li><a href="mothersday.html">Mother's Day Cakes</a></li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-3">
+                <h6 class="footer-heading">CUSTOMIZATION</h6>
+
+                <a href="https://wa.me/919685410772?text=Hi%2C+I%27m+interested+in+customization%21"
+                   class="footer-whatsapp-link"
+                   target="_blank" rel="noopener">
+                    Whatsapp <i class="fa-brands fa-whatsapp text-success fs-5"></i>
+                </a>
+
+                <form class="newsletter-form mt-2"
+                      onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" placeholder="Your email"
+                           class="newsletter-input" required>
+                    <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+
+                <p class="copyright-text">
+                    Fantasy © 2026, All Rights Reserved.
+                    Made with <span class="heart">❤️</span> in India By EagleEye Digital
+                </p>
+
+                <div class="payment-icons">
+                    <span class="pay-badge pay-amex">AMEX</span>
+                    <span class="pay-badge pay-mastercard" title="Mastercard"></span>
+                    <span class="pay-badge" style="background:#f79e1b; color:#fff;" title="Maestro">Maestro</span>
+                    <span class="pay-badge pay-gpay">GPay</span>
+                    <span class="pay-badge pay-visa">VISA</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Product sorting
+    const sortSelect = document.getElementById("sortSelect");
+    const productsContainer = document.getElementById("valentine-cakes");
+
+    sortSelect.addEventListener("change", function () {
+        const cards = Array.from(
+            productsContainer.querySelectorAll(".valentine-card")
+        );
+
+        if (this.value === "alpha-asc") {
+            cards.sort((a, b) =>
+                a.querySelector("h3").textContent.localeCompare(
+                    b.querySelector("h3").textContent
+                )
+            );
+        } else if (this.value === "alpha-desc") {
+            cards.sort((a, b) =>
+                b.querySelector("h3").textContent.localeCompare(
+                    a.querySelector("h3").textContent
+                )
+            );
+        } else if (this.value === "price-asc") {
+            cards.sort((a, b) =>
+                Number(a.dataset.price) - Number(b.dataset.price)
+            );
+        } else if (this.value === "price-desc") {
+            cards.sort((a, b) =>
+                Number(b.dataset.price) - Number(a.dataset.price)
+            );
+        }
+
+        cards.forEach(card => productsContainer.appendChild(card));
+    });
+
+    // Filter button
+    document.getElementById("filterBtn").addEventListener("click", function () {
+        alert("Filter options can be added here.");
+    });
+
+    // Wishlist heart interaction
+    document.querySelectorAll(".valentine-wishlist").forEach(button => {
+        button.addEventListener("click", function () {
+            const heart = this.querySelector("i");
+
+            heart.classList.toggle("fa-regular");
+            heart.classList.toggle("fa-solid");
+
+            this.style.background = heart.classList.contains("fa-solid")
+                ? "#7a3618"
+                : "rgba(80, 40, 30, 0.35)";
+        });
+    });
+
+    // Sweet Memories cards
+    const insta2Images = [
+        {
+            src: "FNTC_Valentine_Day_Product_22_540x.jpg",
+            alt: "Valentine Rose Petal Cake"
+        },
+        {
+            src: "FNTC_Valentine_Day_Product_18_2808x.jpg",
+            alt: "Valentine Heart Cake"
+        },
+        {
+            src: "FNTC_Valentine_Day_Product_16_3024x.jpg",
+            alt: "Valentine Rosette Heart Cake"
+        },
+        {
+            src: "FNTC_Valentine_Day_Product_14_56891f5f-0325-4269-bb0d-4a567853c0bd_180x.jpg",
+            alt: "Heart in Bloom Cake"
+        },
+        {
+            src: "FNTC_Valentine_Day_Product_07_720x.jpg",
+            alt: "Heart of Hearts Cake"
+        },
+       ,
+                    {
+            src: "FNTC_Valentine_Day_Product_05_470bbb74-27c1-4527-915a-1f252a0a5b9b_180x.jpg",
+            alt: "Rose Heart Delight Cake"
+        }
+        
+    ];
+
+    const insta2Slider = document.getElementById("insta2Slider");
+
+    if (insta2Slider) {
+        insta2Images.forEach(function (item) {
+            const card = document.createElement("div");
+            card.className = "insta2-card";
+
+            const image = document.createElement("img");
+            image.src = item.src;
+            image.alt = item.alt;
+            image.loading = "lazy";
+
+            card.appendChild(image);
+            insta2Slider.appendChild(card);
+        });
+    }
+
+    // Sweet Memories slider arrows
+    function insta2Scroll(direction) {
+        if (insta2Slider) {
+            insta2Slider.scrollBy({
+                left: direction * 250,
+                behavior: "smooth"
+            });
+        }
+    }
+</script>
+
+</body>
+</html>

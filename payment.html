@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout — Fantasy Bakery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body class="pay-body">
+
+<!-- HEADER -->
+<header class="header-main">
+    <div class="nav-wrapper">
+        <div class="logo-area">
+            <a href="Home.html"><img src="Fantasy_Logo_135x.png" class="logo-img" alt="logo"></a>
+        </div>
+        <div class="search-area">
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products...">
+                <button class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div class="actions-area">
+            <div class="user-auth">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <div class="auth-text">
+                    <a href="#">Sign In</a> <span>/</span> <a href="#">Register</a>
+                </div>
+            </div>
+            <div class="icon-item">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <span class="badge wish-badge">0</span>
+            </div>
+            <div class="icon-item">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="badge cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark navbar-expand-lg custom-nav">
+    <div class="container-fluid px-0">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="cake.html">Cake</a></li>
+                <li class="nav-item"><a class="nav-link" href="cookies.html">Cookies</a></li>
+                <li class="nav-item"><a class="nav-link" href="combos.html">Combos</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop By Occasion</a></li>
+                <li class="nav-item"><a class="nav-link" href="Wedding.html">Wedding</a></li>
+            </ul>+
+        </div>
+    </div>
+</nav>
+
+<!-- STEPS -->
+<div class="co-steps">
+    <div class="co-step co-done"><div class="co-step-num"><i class="fa fa-check"></i></div> Cart</div>
+    <div class="co-step-line"></div>
+    <div class="co-step co-active"><div class="co-step-num">2</div> Delivery & Payment</div>
+    <div class="co-step-line"></div>
+    <div class="co-step"><div class="co-step-num">3</div> Confirmation</div>
+</div>
+
+<!-- MAIN -->
+<div class="co-wrapper">
+
+    <!-- LEFT -->
+    <div class="co-left">
+
+        <!-- DELIVERY -->
+        <div class="co-card">
+            <div class="co-card-title"><i class="fa fa-map-marker-alt"></i> Delivery Details</div>
+            <div class="co-grid">
+                <div class="co-field">
+                    <label>Full Name *</label>
+                    <input type="text" id="fname" placeholder="Enter your full name">
+                </div>
+                <div class="co-field">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" placeholder="10-digit mobile number" maxlength="10">
+                </div>
+                <div class="co-field co-full">
+                    <label>Delivery Address *</label>
+                    <textarea id="address" placeholder="House No, Street, Area, City, Pincode..."></textarea>
+                </div>
+                <div class="co-field">
+                    <label>Delivery Date *</label>
+                    <input type="date" id="delivery-date">
+                </div>
+                <div class="co-field">
+                    <label>Note (optional)</label>
+                    <input type="text" id="instructions" placeholder="Message on cake, etc.">
+                </div>
+            </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="co-card">
+            <div class="co-card-title"><i class="fa fa-credit-card"></i> Payment Method</div>
+            <div class="co-pay-grid">
+
+                <label class="co-pay-opt co-selected" id="opt-upi">
+                    <input type="radio" name="payment" value="upi" checked onchange="selectPayment('upi')">
+                    <span class="co-pay-icon">📱</span>
+                    <div>
+                        <strong>UPI</strong>
+                        <span>GPay · PhonePe · Paytm</span>
+                    </div>
+                </label>
+
+                <label class="co-pay-opt" id="opt-card">
+                    <input type="radio" name="payment" value="card" onchange="selectPayment('card')">
+                    <span class="co-pay-icon">💳</span>
+                    <div>
+                        <strong>Card</strong>
+                        <span>Visa · Mastercard · RuPay</span>
+                    </div>
+                </label>
+
+                <label class="co-pay-opt" id="opt-netbanking">
+                    <input type="radio" name="payment" value="netbanking" onchange="selectPayment('netbanking')">
+                    <span class="co-pay-icon">🏦</span>
+                    <div>
+                        <strong>Net Banking</strong>
+                        <span>All major banks</span>
+                    </div>
+                </label>
+
+                <label class="co-pay-opt" id="opt-cod">
+                    <input type="radio" name="payment" value="cod" onchange="selectPayment('cod')">
+                    <span class="co-pay-icon">💵</span>
+                    <div>
+                        <strong>Cash on Delivery</strong>
+                        <span>Pay on arrival</span>
+                    </div>
+                </label>
+
+                <!-- UPI input -->
+                <div class="co-pay-extra co-show" id="upi-wrap">
+                    <div class="co-field">
+                        <label>UPI ID</label>
+                        <input type="text" id="upi-id" placeholder="name@okaxis">
+                    </div>
+                </div>
+
+                <!-- Card inputs -->
+                <div class="co-pay-extra" id="card-wrap">
+                    <div class="co-grid">
+                        <div class="co-field co-full">
+                            <label>Card Number</label>
+                            <input type="text" id="card-num" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="co-field">
+                            <label>Expiry</label>
+                            <input type="text" id="card-exp" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="co-field">
+                            <label>CVV</label>
+                            <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+    <div class="co-right">
+        <div class="co-summary">
+            <div class="co-card-title"><i class="fa fa-shopping-bag"></i> Order Summary</div>
+            <div id="summary-items"></div>
+            <hr class="co-divider">
+            <div class="co-coupon">
+                <input type="text" id="coupon-input" placeholder="Coupon code">
+                <button onclick="applyCoupon()">Apply</button>
+            </div>
+            <div class="coupon-msg" id="coupon-msg"></div>
+            <hr class="co-divider">
+            <div class="co-row"><span>Subtotal</span><span id="subtotal">Rs.0</span></div>
+            <div class="co-row"><span>Delivery</span><span class="co-free">FREE 🎉</span></div>
+            <div class="co-row co-discount" id="discount-row" style="display:none">
+                <span>Discount</span><span id="discount-val">-Rs.0</span>
+            </div>
+            <div class="co-row co-total"><span>Total</span><span id="grand-total">Rs.0</span></div>
+            <button class="co-order-btn" id="place-order-btn" onclick="placeOrder()">
+                <i class="fa fa-lock"></i> Place Order →
+            </button>
+            <p class="co-secure"><i class="fa fa-shield-alt"></i> 100% Secure Payment</p>
+            <div class="co-pay-icons">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-paypal"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- SUCCESS -->
+<div id="success-page">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Order Placed!</div>
+    <div class="success-sub">Thank you for ordering from Fantasy Bakery 🎂</div>
+    <div class="success-sub" id="success-name"></div>
+    <div class="success-order-id" id="success-order-id"></div>
+    <div class="success-sub" id="success-delivery"></div>
+    <br>
+    <a href="Home.html" class="success-btn">🏠 Continue Shopping</a>
+</div>
+
+<script src="payment.js"></script>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

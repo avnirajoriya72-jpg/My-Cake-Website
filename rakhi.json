@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "Black Forest Cake",
+    "price": "640",
+    "image": "cake3.png"
+  },
+
+  {
+    "id": 2,
+    "name": "Ras Malai Fusion Cake",
+    "price": "680",
+    "image": "RasMalaiFusionCake004_600x.webp"
+  },
+
+  {
+    "id": 3,
+    "name": "Rabri Almond Cake",
+    "price": "680",
+    "image": "RabriAlmondCake003_540x.webp"
+  },
+
+  {
+    "id": 4,
+    "name": "Chocolate Truffle Cake",
+    "price": "750",
+    "image": "KitkatChocolateCake004_540x.webp"
+  },
+
+  {
+    "id": 5,
+    "name": "Ferro Rocher  Cake",
+    "price": "900",
+    "image": "FerreroRocherTruffleCake003_540x.webp"
+  },
+   {
+    "id": 6,
+    "name": "Pineaaple Cake",
+    "price": "570",
+    "image": "PineappleCake001_600x.webp"
+  },
+  {
+    "id": 7,
+    "name": "Chocolate Cake",
+    "price": "590",
+    "image": "ChocolateCake002_f4631952-0c18-422d-aa5e-b1f4748bb291_540x.webp"
+  },
+
+  {
+    "id": 8,
+    "name": "Chocalte Truffle Cake",
+    "price": "740",
+    "image": "ChocolateTruffleCake003_540x.webp"
+  },
+   {
+    "id": 9,
+    "name": "Chocalte Brownie Cake",
+    "price": "720",
+    "image": "ChocolateBrownieCake002_540x.webp"
+  },
+  {
+  "id": 10,
+    "name": "Chocalte Cake",
+    "price": "620",
+    "image": "cake19.png"
+  }
+]

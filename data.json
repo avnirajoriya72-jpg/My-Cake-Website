@@ -1,0 +1,198 @@
+[
+  {
+    "name": "Biscoff Chocolate Cake",
+    "price": "Rs.820",
+    "img": "cake4.png"
+  },
+  {
+    "name": "Biscoff Chocolate Cake with Red Roses Bunch",
+    "price": "Rs.1,060",
+    "img": "cake2.png"
+  },
+  {
+    "name": "Black Forest Cake",
+    "price": "Rs.640",
+    "img": "cake3.png"
+  },
+{
+  "name": "Blasck Forest Cake with Red Roses Bunch",
+  "price": "Rs.880",
+  "img" : "cake11.png"
+},
+{
+  "name" : "Caramel Silk Choclate Cake",
+  "price": "Rs.880",
+  "img" : "cake12.png"
+},
+{
+  "name":"Caramel Silk Choclate with bunch of Red Roses",
+  "price":"Rs.1,040",
+  "img": "cake13.png"
+},
+{
+  "name": "Choclate Brownie Cake",
+  "price":"Rs.720",
+  "img":"cake14.png"
+},
+{
+  "name":"Choclate Brownie Cake with bunch of Red roses",
+  "price":"Rs.690",
+  "img":"cake15.png"
+},
+{
+  "name":"Choclate Cake",
+  "price":"Rs.590",
+  "img":"cake16.png"
+},
+{
+  "name":"Choclate  Cake with bunch of red roses",
+  "price":"Rs.830",
+  "img":"cake17.png"
+},
+{
+  "name":"Choclate Truffle Cake",
+  "price":"Rs.740",
+  "img":"cake18.png"
+},
+{
+  "name":"Choclate Truffle Cake",
+  "price":"Rs.740",
+  "img":"cake19.png"
+},
+{
+  "name":"Choclate Cake with bunch of red roses",
+  "price":"Rs.980",
+  "img":"cake20.png"
+},
+{
+  "name":"Death By Choclate Cake",
+  "price":"Rs.730",
+  "img":"cake21.png"
+},
+{
+  "name":"Death By Choclate Cake with bunch of red Roses",
+  "price":"930",
+  "img":"cake22.png" 
+},
+{
+  "name":"Fathers Day Belgian Choclate Cake",
+  "price":"Rs.800",
+  "img":"cake23.png"
+},
+{
+  "name":"Fathers Day Choclate Photo Cake",
+  "price":"Rs.670",
+  "img":"cake24.png"
+},
+{
+  "name":"Fathers Day Red Velvet Cake",
+  "price":"Rs.790",
+  "img":"cake25.png"
+},
+{
+  "name":"Fathers  Day ferorche Cake ",
+  "price":"Rs.990",
+  "img":"cake26.png"
+},
+{
+  "name":"Fathers Day Pinapple Cake",
+  "price":"Rs.620",
+  "img":"cake27.png"
+},
+{
+  "name":"Fathers Day Rabdi Almond Cake",
+  "price":"Rs.730",
+  "img":"cake28.png"
+},
+{
+  "name":"Ferro Rocher Cake",
+  "price":"Rs.800",
+  "img":"cake29.png"
+},
+{
+  "name":"Ferro Rocher Cake with bunch of red roses" ,
+  "price":"Rs.1,040",
+  "img":"cake30.png"
+},
+{
+  "name":"Ferro Rocher Truffle Cake",
+  "price":"Rs.900",
+  "img":"cake31.png"
+},
+{
+  "name":"Ferro Rocher Truffle Cake with bunch of red roses",
+  "price":"Rs.1,040",
+  "img":"cake32.png"
+},
+{
+  "name":"Fresh mixed Fruit Cake",
+  "price":"Rs.680",
+  "img":"cake33.png"
+},
+{
+  "name":"Fresh mixed Fruit Cake with bunch of red roses",
+  "price":"Rs.920",
+  "img":"cake34.png"
+},
+{
+  "name":"kit-kat Chocalte Cake",
+  "price":"Rs.800",
+  "img":"cake35.png"
+},
+{
+  "name":"Love Shrocth Cake",
+  "price":"Rs.580",
+  "img":"cake36.png"
+},
+{
+  "name":"Love Shrocth Cake with bunch of red roses",
+  "price":"Rs.820",
+  "img":"cake37.png"
+},
+{
+  "name":"Valentines Ivory Blossom Cake",
+  "price":"Rs.1,590",
+  "img":"cake38.png"
+},
+{
+  "name":"Valentines 365 Days of Romance Cake",
+  "price":"Rs.1,590",
+  "img":"cake39.png"
+},
+{
+  "name":"Valentine's 3d Belgium Rose Cake",
+  "price":"Rs.3,750",
+  "img":"cake40.png"
+},
+{
+  "name":"Valentine's 3d Belgium Rose Cake",
+  "price":"Rs.3,750",
+  "img":"cake40.png"
+},
+{
+  "name":"Valentine's Belgium Chocolate White Bow Cake",
+  "price":"Rs.2,150",
+  "img":"cake41.png"
+},
+{
+  "name":"Valentine's Eternal Rose Cake",
+  "price":"Rs.3,010",
+  "img":"cake42.png"
+},
+{
+
+  "name":"alentine's Gilded I Love You Cake",
+  "price":"Rs.3,310",
+  "img":"cake43.png"
+},
+{
+  "name":"Valentine's Gold Dusted Truffle Cake",
+  "price":"Rs.1,590",
+  "img":"cake44.png"
+},
+{
+  "name":"Valentine's Rose heart Cake",
+  "price":"Rs.1,590",
+  "img":"cake45.png"
+}
+]

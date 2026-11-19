@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Biscoff Chocolate Cake with Red Roses Bunch",
+        "price": "Rs.1,060",
+        "img": "cake2.png"
+    },
+    {
+        "id": 2,
+        "name": "Death By Chocolate Cake with Red Roses",
+        "price": "Rs.930",
+        "img": "cake22.png"
+    },
+    {
+        "id": 3,
+        "name": "Ferro Rocher Cake with Red Roses",
+        "price": "Rs.1,040",
+        "img": "cake30.png"
+    },
+    {
+        "id": 4,
+        "name": "Caramel Silk Chocolate with Red Roses",
+        "price": "Rs.1,040",
+        "img": "cake13.png"
+    },
+    {
+        "id": 5,
+        "name": "Black Forest Cake with Red Roses Bunch",
+        "price": "Rs.880",
+        "img": "cake11.png"
+    },
+    {
+        "id": 6,
+        "name": "Fresh Mixed Fruit Cake with Red Roses",
+        "price": "Rs.920",
+        "img": "cake34.png"
+    }
+]
